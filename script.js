@@ -12,7 +12,7 @@ function showSection(id) {
 
 // Hide all sections initially
 window.onload = function() {
-  showSection(''); // hides all
+  showSection(''); // hides all on load
 };
 
 // ===== Cyber Safety Score =====
