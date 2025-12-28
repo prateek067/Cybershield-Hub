@@ -64,12 +64,12 @@ header p {
   background-color: #3498db;
 }
 
-/* Tool Sections (Cyber Score, Password Checker, etc.) */
+/* Tool Sections (Hidden by default) */
 section[id="cyberscore"],
 section[id="passwordCheck"],
 section[id="linkChecker"],
 section[id="privacyChecker"] {
-  display: none; /* Hidden by default, shown when button clicked */
+  display: none; /* Hidden initially */
   background-color: white;
   padding: 40px 20px;
   margin: 30px auto;
@@ -101,10 +101,6 @@ input[type="password"] {
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
-}
-
-button {
-  cursor: pointer;
 }
 
 button:hover {
