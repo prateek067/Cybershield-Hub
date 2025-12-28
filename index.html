@@ -61,7 +61,8 @@
   <section id="passwordCheck">
     <h2>Password Strength Checker</h2>
     <label for="passwordInput">Enter your password:</label><br>
-    <input type="password" id="passwordInput" placeholder="Enter password"><br><br>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <input type="checkbox" id="showPassword" onclick="togglePassword()"> Show Password<br><br>
     <button type="button" onclick="checkPassword()">Check Strength</button>
     <p id="passwordResult"></p>
   </section>
@@ -80,35 +81,4 @@
     <h2>Privacy & Footprint Checker</h2>
     <form id="privacyForm">
       <label>1. Do you share your personal info on public profiles?</label><br>
-      <input type="radio" name="p1" value="0">Yes
-      <input type="radio" name="p1" value="10">No<br><br>
-
-      <label>2. Do you use privacy settings on social media?</label><br>
-      <input type="radio" name="p2" value="10">Yes
-      <input type="radio" name="p2" value="0">No<br><br>
-
-      <label>3. Do you review app permissions before installing?</label><br>
-      <input type="radio" name="p3" value="10">Yes
-      <input type="radio" name="p3" value="0">No<br><br>
-
-      <label>4. Do you use VPN or secure connections when online?</label><br>
-      <input type="radio" name="p4" value="10">Yes
-      <input type="radio" name="p4" value="0">No<br><br>
-
-      <label>5. Do you avoid posting location or travel details publicly?</label><br>
-      <input type="radio" name="p5" value="10">Yes
-      <input type="radio" name="p5" value="0">No<br><br>
-
-      <button type="button" onclick="calculatePrivacy()">Check My Privacy Score</button>
-    </form>
-    <p id="privacyResult"></p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Prateek Gaur | <a href="https://github.com/prateek067">GitHub</a></p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+      <inp
