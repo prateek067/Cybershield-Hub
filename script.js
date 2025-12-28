@@ -1,3 +1,4 @@
+console.log("JS Loaded");
 // ===== Show/Hide Sections Function =====
 function showSection(id) {
   const sections = ['cyberscore', 'passwordCheck', 'linkChecker', 'privacyChecker'];
