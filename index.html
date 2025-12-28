@@ -23,6 +23,35 @@
 | Footer                        |
 |   - Credits / Your name / GitHub link
 -----------------------------------
+  <section id="cyberscore">
+  <h2>Cyber Safety Score</h2>
+  <form id="scoreForm">
+    <label>1. Do you use unique passwords for all accounts?</label><br>
+    <input type="radio" name="q1" value="10">Yes
+    <input type="radio" name="q1" value="0">No<br><br>
+
+    <label>2. Do you click links from unknown sources?</label><br>
+    <input type="radio" name="q2" value="0">Yes
+    <input type="radio" name="q2" value="10">No<br><br>
+
+    <label>3. Do you share personal info online?</label><br>
+    <input type="radio" name="q3" value="0">Yes
+    <input type="radio" name="q3" value="10">No<br><br>
+
+    <label>4. Do you update your apps and software regularly?</label><br>
+    <input type="radio" name="q4" value="10">Yes
+    <input type="radio" name="q4" value="0">No<br><br>
+
+    <label>5. Do you use two-factor authentication?</label><br>
+    <input type="radio" name="q5" value="10">Yes
+    <input type="radio" name="q5" value="0">No<br><br>
+
+    <button type="button" onclick="calculateScore()">Get Your Score</button>
+  </form>
+
+  <p id="scoreResult"></p>
+</section>
+
 
   <script src="script.js"></script>
 </body>
