@@ -1,4 +1,3 @@
-console.log("JS Loaded");
 // ===== Show/Hide Sections Function =====
 function showSection(id) {
   const sections = ['cyberscore', 'passwordCheck', 'linkChecker', 'privacyChecker'];
@@ -82,4 +81,26 @@ function checkLink() {
   }
 
   document.getElementById("linkResult").innerText = `This link is: ${risk}`;
+}
+
+// ===== Privacy & Footprint Checker =====
+function calculatePrivacy() {
+  let total = 0;
+  const form = document.getElementById("privacyForm");
+  const answers = form.querySelectorAll("input[type='radio']:checked");
+
+  answers.forEach(ans => {
+    total += parseInt(ans.value);
+  });
+
+  let result = "";
+  if (total <= 30) {
+    result = `High Exposure! Your score is ${total}/50. Your online footprint is risky.`;
+  } else if (total <= 40) {
+    result = `Medium Exposure. Your score is ${total}/50. Improve some habits for better privacy.`;
+  } else {
+    result = `Low Exposure! Your score is ${total}/50. Great job keeping your online footprint safe!`;
+  }
+
+  document.getElementById("privacyResult").innerText = result;
 }
