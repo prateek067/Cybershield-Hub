@@ -48,4 +48,44 @@
       <input type="radio" name="q4" value="10">Yes
       <input type="radio" name="q4" value="0">No<br><br>
 
-      <label>5. Do you use
+      <label>5. Do you use two-factor authentication?</label><br>
+      <input type="radio" name="q5" value="10">Yes
+      <input type="radio" name="q5" value="0">No<br><br>
+
+      <button type="button" onclick="calculateScore()">Get Your Score</button>
+    </form>
+    <p id="scoreResult"></p>
+  </section>
+
+  <!-- Password Strength Checker Section -->
+  <section id="passwordCheck">
+    <h2>Password Strength Checker</h2>
+    <label for="passwordInput">Enter your password:</label><br>
+    <input type="password" id="passwordInput" placeholder="Enter password"><br><br>
+    <button type="button" onclick="checkPassword()">Check Strength</button>
+    <p id="passwordResult"></p>
+  </section>
+
+  <!-- Link Risk Analyzer Section -->
+  <section id="linkChecker">
+    <h2>Link Risk Analyzer</h2>
+    <label for="linkInput">Enter a URL to check:</label><br>
+    <input type="text" id="linkInput" placeholder="https://example.com"><br><br>
+    <button type="button" onclick="checkLink()">Check Link</button>
+    <p id="linkResult"></p>
+  </section>
+
+  <!-- Privacy & Footprint Checker Section -->
+  <section id="privacyChecker">
+    <h2>Privacy & Footprint Checker</h2>
+    <p>Check your online exposure (feature coming soon)</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Prateek Gaur | <a href="https://github.com/prateek067">GitHub</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
