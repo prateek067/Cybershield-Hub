@@ -21,6 +21,11 @@ function calculateScore() {
   const form = document.getElementById("scoreForm");
   const answers = form.querySelectorAll("input[type='radio']:checked");
 
+  if (answers.length < 5) {
+    alert("Please answer all questions to get your score.");
+    return;
+  }
+
   answers.forEach(ans => {
     total += parseInt(ans.value);
   });
@@ -67,6 +72,14 @@ function checkPassword() {
   document.getElementById("passwordResult").innerText = resultText;
 }
 
+// ===== Toggle Password Visibility =====
+function togglePassword() {
+  const passwordInput = document.getElementById("passwordInput");
+  const showCheckbox = document.getElementById("showPassword");
+
+  passwordInput.type = showCheckbox.checked ? "text" : "password";
+}
+
 // ===== Link Risk Analyzer (Basic) =====
 function checkLink() {
   const url = document.getElementById("linkInput").value;
@@ -89,18 +102,24 @@ function calculatePrivacy() {
   const form = document.getElementById("privacyForm");
   const answers = form.querySelectorAll("input[type='radio']:checked");
 
+  if (answers.length < 5) {
+    alert("Please answer all questions to get your privacy score.");
+    return;
+  }
+
   answers.forEach(ans => {
     total += parseInt(ans.value);
   });
 
-  let result = "";
+  let riskLevel = "";
   if (total <= 30) {
-    result = `High Exposure! Your score is ${total}/50. Your online footprint is risky.`;
+    riskLevel = "High Exposure";
   } else if (total <= 40) {
-    result = `Medium Exposure. Your score is ${total}/50. Improve some habits for better privacy.`;
+    riskLevel = "Medium Exposure";
   } else {
-    result = `Low Exposure! Your score is ${total}/50. Great job keeping your online footprint safe!`;
+    riskLevel = "Low Exposure";
   }
 
-  document.getElementById("privacyResult").innerText = result;
+  document.getElementById("privacyResult").innerText = 
+    `Your Privacy Score: ${total}/50 → ${riskLevel}`;
 }
