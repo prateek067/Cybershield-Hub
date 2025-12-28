@@ -78,7 +78,30 @@
   <!-- Privacy & Footprint Checker Section -->
   <section id="privacyChecker">
     <h2>Privacy & Footprint Checker</h2>
-    <p>Check your online exposure (feature coming soon)</p>
+    <form id="privacyForm">
+      <label>1. Do you share your personal info on public profiles?</label><br>
+      <input type="radio" name="p1" value="0">Yes
+      <input type="radio" name="p1" value="10">No<br><br>
+
+      <label>2. Do you use privacy settings on social media?</label><br>
+      <input type="radio" name="p2" value="10">Yes
+      <input type="radio" name="p2" value="0">No<br><br>
+
+      <label>3. Do you review app permissions before installing?</label><br>
+      <input type="radio" name="p3" value="10">Yes
+      <input type="radio" name="p3" value="0">No<br><br>
+
+      <label>4. Do you use VPN or secure connections when online?</label><br>
+      <input type="radio" name="p4" value="10">Yes
+      <input type="radio" name="p4" value="0">No<br><br>
+
+      <label>5. Do you avoid posting location or travel details publicly?</label><br>
+      <input type="radio" name="p5" value="10">Yes
+      <input type="radio" name="p5" value="0">No<br><br>
+
+      <button type="button" onclick="calculatePrivacy()">Check My Privacy Score</button>
+    </form>
+    <p id="privacyResult"></p>
   </section>
 
   <!-- Footer -->
