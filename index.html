@@ -1,58 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>CyberShield Hub</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
   <h1>CyberShield Hub</h1>
   <p>Student Cyber Safety Analyzer</p>
------------------------------------
-| Header / Navbar                |
-|   - Home   - Cyber Score   - Password Check   - Link Checker   - Privacy Checker
------------------------------------
-| Hero Section                   |
-|   - Title: CyberShield Hub     |
-|   - Subtitle: Student Cyber Safety Analyzer
-|   - Short description / tagline
------------------------------------
-| Features Section               |
-|   - Four blocks/buttons for each tool
-|   - Each block has icon + feature name + one line description
------------------------------------
-| Footer                        |
-|   - Credits / Your name / GitHub link
------------------------------------
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <h2>Welcome to CyberShield Hub</h2>
+    <p>Analyze your digital safety like a pro.</p>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="feature">
+      <h3>Cyber Safety Score</h3>
+      <p>Get your personalized safety score</p>
+    </div>
+    <div class="feature">
+      <h3>Password Strength Checker</h3>
+      <p>Check if your passwords are strong enough</p>
+    </div>
+    <div class="feature">
+      <h3>Link Risk Analyzer</h3>
+      <p>Detect phishing or unsafe links</p>
+    </div>
+    <div class="feature">
+      <h3>Privacy & Footprint Checker</h3>
+      <p>Know how exposed you are online</p>
+    </div>
+  </section>
+
+  <!-- Cyber Safety Score Form -->
   <section id="cyberscore">
-  <h2>Cyber Safety Score</h2>
-  <form id="scoreForm">
-    <label>1. Do you use unique passwords for all accounts?</label><br>
-    <input type="radio" name="q1" value="10">Yes
-    <input type="radio" name="q1" value="0">No<br><br>
-
-    <label>2. Do you click links from unknown sources?</label><br>
-    <input type="radio" name="q2" value="0">Yes
-    <input type="radio" name="q2" value="10">No<br><br>
-
-    <label>3. Do you share personal info online?</label><br>
-    <input type="radio" name="q3" value="0">Yes
-    <input type="radio" name="q3" value="10">No<br><br>
-
-    <label>4. Do you update your apps and software regularly?</label><br>
-    <input type="radio" name="q4" value="10">Yes
-    <input type="radio" name="q4" value="0">No<br><br>
-
-    <label>5. Do you use two-factor authentication?</label><br>
-    <input type="radio" name="q5" value="10">Yes
-    <input type="radio" name="q5" value="0">No<br><br>
-
-    <button type="button" onclick="calculateScore()">Get Your Score</button>
-  </form>
-
-  <p id="scoreResult"></p>
-</section>
-
+    ...
+  </section>
 
   <script src="script.js"></script>
 </body>
-</html>
