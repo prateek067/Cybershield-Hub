@@ -1,125 +1,55 @@
-// ===== Show/Hide Sections Function =====
+let score = 0;
+let privacy = 0;
+
 function showSection(id) {
-  const sections = ['cyberscore', 'passwordCheck', 'linkChecker', 'privacyChecker'];
-  sections.forEach(sec => {
-    document.getElementById(sec).style.display = 'none';
+  const sections = document.querySelectorAll("section");
+  sections.forEach(section => {
+    section.style.display = "none";
   });
 
-  if(id !== '') {
-    document.getElementById(id).style.display = 'block';
-  }
-}
-
-// Hide all sections initially
-window.onload = function() {
-  showSection(''); // hides all on load
-};
-
-// ===== Cyber Safety Score =====
-function calculateScore() {
-  let total = 0;
-  const form = document.getElementById("scoreForm");
-  const answers = form.querySelectorAll("input[type='radio']:checked");
-
-  if (answers.length < 5) {
-    alert("Please answer all questions to get your score.");
-    return;
-  }
-
-  answers.forEach(ans => {
-    total += parseInt(ans.value);
-  });
-
-  let result = "";
-  if (total <= 30) {
-    result = `High Risk! Your score is ${total}/50. Be careful online.`;
-  } else if (total <= 60) {
-    result = `Medium Risk. Your score is ${total}/50. Some habits need improvement.`;
+  const target = document.getElementById(id);
+  if (target) {
+    target.style.display = "block";
+    target.scrollIntoView({ behavior: "smooth" });
   } else {
-    result = `Low Risk! Your score is ${total}/50. Great job staying safe online!`;
+    alert("Section not found: " + id);
   }
-
-  document.getElementById("scoreResult").innerText = result;
 }
 
-// ===== Password Strength Checker =====
+function addScore(value) {
+  score += value;
+  document.getElementById("score").innerText = score;
+}
+
 function checkPassword() {
-  const password = document.getElementById("passwordInput").value;
-  let strength = 0;
+  const pass = document.getElementById("passwordInput").value;
+  let result = "Weak";
 
-  if (password.length >= 8) strength += 1;
-  if (/[A-Z]/.test(password)) strength += 1;
-  if (/[a-z]/.test(password)) strength += 1;
-  if (/[0-9]/.test(password)) strength += 1;
-  if (/[\W_]/.test(password)) strength += 1;
-
-  let resultText = "";
-  switch(strength) {
-    case 0:
-    case 1:
-    case 2:
-      resultText = "Weak Password";
-      break;
-    case 3:
-    case 4:
-      resultText = "Medium Password";
-      break;
-    case 5:
-      resultText = "Strong Password";
-      break;
+  if (pass.length >= 8 && /[A-Z]/.test(pass) && /[0-9]/.test(pass)) {
+    result = "Strong";
   }
 
-  document.getElementById("passwordResult").innerText = resultText;
+  document.getElementById("passwordResult").innerText =
+    "Password Strength: " + result;
 }
 
-// ===== Toggle Password Visibility =====
 function togglePassword() {
-  const passwordInput = document.getElementById("passwordInput");
-  const showCheckbox = document.getElementById("showPassword");
-
-  passwordInput.type = showCheckbox.checked ? "text" : "password";
+  const input = document.getElementById("passwordInput");
+  input.type = input.type === "password" ? "text" : "password";
 }
 
-// ===== Link Risk Analyzer (Basic) =====
 function checkLink() {
-  const url = document.getElementById("linkInput").value;
-  const suspiciousKeywords = ['free', 'verify', 'login', 'update', 'account', 'password'];
-  let risk = 'Safe';
-
-  for(let word of suspiciousKeywords) {
-    if(url.toLowerCase().includes(word)) {
-      risk = 'Risky';
-      break;
-    }
+  const link = document.getElementById("linkInput").value;
+  if (link.includes("http") && !link.includes("secure")) {
+    document.getElementById("linkResult").innerText =
+      "⚠️ Link may be suspicious";
+  } else {
+    document.getElementById("linkResult").innerText =
+      "✅ Link looks safe";
   }
-
-  document.getElementById("linkResult").innerText = `This link is: ${risk}`;
 }
 
-// ===== Privacy & Footprint Checker =====
-function calculatePrivacy() {
-  let total = 0;
-  const form = document.getElementById("privacyForm");
-  const answers = form.querySelectorAll("input[type='radio']:checked");
-
-  if (answers.length < 5) {
-    alert("Please answer all questions to get your privacy score.");
-    return;
-  }
-
-  answers.forEach(ans => {
-    total += parseInt(ans.value);
-  });
-
-  let riskLevel = "";
-  if (total <= 30) {
-    riskLevel = "High Exposure";
-  } else if (total <= 40) {
-    riskLevel = "Medium Exposure";
-  } else {
-    riskLevel = "Low Exposure";
-  }
-
-  document.getElementById("privacyResult").innerText = 
-    `Your Privacy Score: ${total}/50 → ${riskLevel}`;
+function privacyScore(value) {
+  privacy += value;
+  document.getElementById("privacyScore").innerText = privacy;
 }
