@@ -2,83 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CyberShield Hub</title>
+  <title>Cyber Safety Toolkit</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header -->
   <header>
-    <h1>CyberShield Hub</h1>
-    <p>Student Cyber Safety Analyzer</p>
+    <h1>Cyber Safety Toolkit</h1>
+    <p>Check your digital safety in one place</p>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <h2>Welcome to CyberShield Hub</h2>
-    <p>Analyze your digital safety like a pro.</p>
-  </section>
-
-  <!-- Features Section with Buttons -->
-  <section id="features">
+  <div class="features">
     <button onclick="showSection('cyberscore')">Cyber Safety Score</button>
-    <button onclick="showSection('passwordCheck')">Password Strength Checker</button>
-    <button onclick="showSection('linkChecker')">Link Risk Analyzer</button>
-    <button onclick="showSection('privacyChecker')">Privacy & Footprint Checker</button>
-  </section>
+    <button onclick="showSection('passwordCheck')">Password Checker</button>
+    <button onclick="showSection('linkChecker')">Link Checker</button>
+    <button onclick="showSection('privacyChecker')">Privacy & Footprint</button>
+  </div>
 
-  <!-- Cyber Safety Score Section -->
+  <!-- SECTIONS -->
   <section id="cyberscore">
     <h2>Cyber Safety Score</h2>
-    <form id="scoreForm">
-      <label>1. Do you use unique passwords for all accounts?</label><br>
-      <input type="radio" name="q1" value="10">Yes
-      <input type="radio" name="q1" value="0">No<br><br>
-
-      <label>2. Do you click links from unknown sources?</label><br>
-      <input type="radio" name="q2" value="0">Yes
-      <input type="radio" name="q2" value="10">No<br><br>
-
-      <label>3. Do you share personal info online?</label><br>
-      <input type="radio" name="q3" value="0">Yes
-      <input type="radio" name="q3" value="10">No<br><br>
-
-      <label>4. Do you update your apps and software regularly?</label><br>
-      <input type="radio" name="q4" value="10">Yes
-      <input type="radio" name="q4" value="0">No<br><br>
-
-      <label>5. Do you use two-factor authentication?</label><br>
-      <input type="radio" name="q5" value="10">Yes
-      <input type="radio" name="q5" value="0">No<br><br>
-
-      <button type="button" onclick="calculateScore()">Get Your Score</button>
-    </form>
-    <p id="scoreResult"></p>
+    <p>Do you use strong passwords?</p>
+    <button onclick="addScore(10)">Yes</button>
+    <button onclick="addScore(0)">No</button>
+    <p>Your Score: <span id="score">0</span></p>
   </section>
 
-  <!-- Password Strength Checker Section -->
   <section id="passwordCheck">
     <h2>Password Strength Checker</h2>
-    <label for="passwordInput">Enter your password:</label><br>
     <input type="password" id="passwordInput" placeholder="Enter password">
-    <input type="checkbox" id="showPassword" onclick="togglePassword()"> Show Password<br><br>
-    <button type="button" onclick="checkPassword()">Check Strength</button>
+    <br><br>
+    <input type="checkbox" onclick="togglePassword()"> Show Password
+    <br><br>
+    <button onclick="checkPassword()">Check Strength</button>
     <p id="passwordResult"></p>
   </section>
 
-  <!-- Link Risk Analyzer Section -->
   <section id="linkChecker">
-    <h2>Link Risk Analyzer</h2>
-    <label for="linkInput">Enter a URL to check:</label><br>
-    <input type="text" id="linkInput" placeholder="https://example.com"><br><br>
-    <button type="button" onclick="checkLink()">Check Link</button>
+    <h2>Suspicious Link Checker</h2>
+    <input type="text" id="linkInput" placeholder="Paste link here">
+    <br><br>
+    <button onclick="checkLink()">Check Link</button>
     <p id="linkResult"></p>
   </section>
 
-  <!-- Privacy & Footprint Checker Section -->
   <section id="privacyChecker">
-    <h2>Privacy & Footprint Checker</h2>
-    <form id="privacyForm">
-      <label>1. Do you share your personal info on public profiles?</label><br>
-      <inp
+    <h2>Privacy & Digital Footprint</h2>
+    <p>Do you keep social media accounts private?</p>
+    <button onclick="privacyScore(10)">Yes</button>
+    <button onclick="privacyScore(0)">No</button>
+    <p>Your Privacy Score: <span id="privacyScore">0</span></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
