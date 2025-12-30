@@ -1,51 +1,45 @@
-// ===== Show / Hide Sections (Mobile Safe) =====
+// ===== Show/Hide Sections Function =====
 function showSection(id) {
   const sections = ['cyberscore', 'passwordCheck', 'linkChecker', 'privacyChecker'];
-
   sections.forEach(sec => {
-    const element = document.getElementById(sec);
-    element.style.display = 'none';
+    document.getElementById(sec).style.display = 'none';
   });
 
-  if (id !== '') {
-    const activeSection = document.getElementById(id);
-    activeSection.style.display = 'block';
-
-    // Mobile fix: scroll to section
-    activeSection.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+  if(id !== '') {
+    document.getElementById(id).style.display = 'block';
   }
 }
 
-// Hide all sections on load
-window.onload = function () {
-  showSection('');
+// Hide all sections initially
+window.onload = function() {
+  showSection(''); // hides all on load
 };
 
 // ===== Cyber Safety Score =====
 function calculateScore() {
   let total = 0;
-  const answers = document.querySelectorAll('#scoreForm input[type="radio"]:checked');
+  const form = document.getElementById("scoreForm");
+  const answers = form.querySelectorAll("input[type='radio']:checked");
 
   if (answers.length < 5) {
-    alert("Answer all questions first.");
+    alert("Please answer all questions to get your score.");
     return;
   }
 
-  answers.forEach(ans => total += parseInt(ans.value));
+  answers.forEach(ans => {
+    total += parseInt(ans.value);
+  });
 
-  let message = "";
+  let result = "";
   if (total <= 30) {
-    message = `High Risk ⚠️ | Score: ${total}/50`;
-  } else if (total <= 40) {
-    message = `Medium Risk ⚡ | Score: ${total}/50`;
+    result = `High Risk! Your score is ${total}/50. Be careful online.`;
+  } else if (total <= 60) {
+    result = `Medium Risk. Your score is ${total}/50. Some habits need improvement.`;
   } else {
-    message = `Low Risk ✅ | Score: ${total}/50`;
+    result = `Low Risk! Your score is ${total}/50. Great job staying safe online!`;
   }
 
-  document.getElementById("scoreResult").innerText = message;
+  document.getElementById("scoreResult").innerText = result;
 }
 
 // ===== Password Strength Checker =====
@@ -53,56 +47,79 @@ function checkPassword() {
   const password = document.getElementById("passwordInput").value;
   let strength = 0;
 
-  if (password.length >= 8) strength++;
-  if (/[A-Z]/.test(password)) strength++;
-  if (/[a-z]/.test(password)) strength++;
-  if (/[0-9]/.test(password)) strength++;
-  if (/[\W_]/.test(password)) strength++;
+  if (password.length >= 8) strength += 1;
+  if (/[A-Z]/.test(password)) strength += 1;
+  if (/[a-z]/.test(password)) strength += 1;
+  if (/[0-9]/.test(password)) strength += 1;
+  if (/[\W_]/.test(password)) strength += 1;
 
-  let result = "";
-  if (strength <= 2) result = "Weak Password ❌";
-  else if (strength <= 4) result = "Medium Password ⚠️";
-  else result = "Strong Password ✅";
+  let resultText = "";
+  switch(strength) {
+    case 0:
+    case 1:
+    case 2:
+      resultText = "Weak Password";
+      break;
+    case 3:
+    case 4:
+      resultText = "Medium Password";
+      break;
+    case 5:
+      resultText = "Strong Password";
+      break;
+  }
 
-  document.getElementById("passwordResult").innerText = result;
+  document.getElementById("passwordResult").innerText = resultText;
 }
 
-// ===== Show / Hide Password =====
+// ===== Toggle Password Visibility =====
 function togglePassword() {
-  const input = document.getElementById("passwordInput");
-  input.type = input.type === "password" ? "text" : "password";
+  const passwordInput = document.getElementById("passwordInput");
+  const showCheckbox = document.getElementById("showPassword");
+
+  passwordInput.type = showCheckbox.checked ? "text" : "password";
 }
 
-// ===== Link Risk Analyzer =====
+// ===== Link Risk Analyzer (Basic) =====
 function checkLink() {
-  const url = document.getElementById("linkInput").value.toLowerCase();
-  const riskyWords = ['free', 'verify', 'login', 'update', 'password', 'account'];
+  const url = document.getElementById("linkInput").value;
+  const suspiciousKeywords = ['free', 'verify', 'login', 'update', 'account', 'password'];
+  let risk = 'Safe';
 
-  let risk = "Safe ✅";
-  riskyWords.forEach(word => {
-    if (url.includes(word)) risk = "Risky ⚠️";
-  });
+  for(let word of suspiciousKeywords) {
+    if(url.toLowerCase().includes(word)) {
+      risk = 'Risky';
+      break;
+    }
+  }
 
-  document.getElementById("linkResult").innerText = `Result: ${risk}`;
+  document.getElementById("linkResult").innerText = `This link is: ${risk}`;
 }
 
 // ===== Privacy & Footprint Checker =====
 function calculatePrivacy() {
   let total = 0;
-  const answers = document.querySelectorAll('#privacyForm input[type="radio"]:checked');
+  const form = document.getElementById("privacyForm");
+  const answers = form.querySelectorAll("input[type='radio']:checked");
 
   if (answers.length < 5) {
-    alert("Answer all privacy questions.");
+    alert("Please answer all questions to get your privacy score.");
     return;
   }
 
-  answers.forEach(ans => total += parseInt(ans.value));
+  answers.forEach(ans => {
+    total += parseInt(ans.value);
+  });
 
-  let level = "";
-  if (total <= 30) level = "High Exposure ❌";
-  else if (total <= 40) level = "Medium Exposure ⚠️";
-  else level = "Low Exposure ✅";
+  let riskLevel = "";
+  if (total <= 30) {
+    riskLevel = "High Exposure";
+  } else if (total <= 40) {
+    riskLevel = "Medium Exposure";
+  } else {
+    riskLevel = "Low Exposure";
+  }
 
-  document.getElementById("privacyResult").innerText =
-    `Privacy Score: ${total}/50 | ${level}`;
-          }
+  document.getElementById("privacyResult").innerText = 
+    `Your Privacy Score: ${total}/50 → ${riskLevel}`;
+}
